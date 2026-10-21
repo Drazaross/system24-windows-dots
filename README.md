@@ -116,6 +116,29 @@ Matugen installed first. The Komorebi and WHKD copy commands remain separate
 because the installer intentionally does not overwrite those core
 window-management and global-keybinding files.
 
+### Vencord System24 theme
+
+Copy the repository's [vencord-system24.theme.css](./vencord-system24.theme.css)
+to:
+
+```text
+%APPDATA%\Vencord\themes\system24.theme.css
+```
+
+If a theme with that name already exists, back it up before replacing it. In
+Vencord, enable or reload the `system24` theme. The repository copy already
+imports the generated local override:
+
+```css
+@import url('./system24-matugen.css');
+```
+
+The installer does not replace the upstream Vencord theme automatically because
+theme files can be locally customized. If the theme file already exists, the
+installer only adds this import once and creates a timestamped backup first.
+Matugen generates `system24-matugen.css` alongside it whenever the wallpaper
+pipeline runs.
+
 The Komorebi command creates `komorebi.lnk` in the user's Startup folder.
 YASB registers its own per-user startup entry. These commands do not create a
 Windows service or change system-wide startup settings.
@@ -144,6 +167,8 @@ Every tracked file is listed below with its purpose.
   portability, troubleshooting, and file ownership.
 - `TODO.md` - Tracks remaining setup, theming, documentation, and installer
   work.
+- `vencord-system24.theme.css` - Repository copy of the System24 Vencord theme;
+  copy it to Vencord's themes directory before enabling Discord theming.
 
 ### `komorebi/`
 
