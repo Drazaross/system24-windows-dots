@@ -34,7 +34,7 @@
 - [ ] Add wallpaper recommendations and licensing/source notes to the documentation.
 - [ ] Add Zen Browser theming.
 - [ ] Add Discord theming.
-- [ ] Set up Fastfetch.
+- [x] Set up Fastfetch with a compact System24-style configuration.
 - [ ] Ensure Fastfetch colors can use the Matugen palette where practical.
 
 ## Documentation

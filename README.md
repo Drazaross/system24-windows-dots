@@ -9,6 +9,7 @@ Configuration files for a Windows desktop built around Komorebi, WHKD, YASB, and
 - `yasb/` - YASB bar configuration, styling, generated palette, and the Matugen bridge script.
 - `matugen/` - Matugen configuration.
 - `install.ps1` - Installs the files and resolves the current user's wallpaper path.
+- `fastfetch/` - Compact Fastfetch configuration and custom System24 ASCII logo.
 
 ## Active color pipeline
 
@@ -35,6 +36,18 @@ Komorebi uses `border_colours` (British spelling) and `border_style`. The `theme
 Runtime logs such as `yasb.log` and `matugen.log` are ignored. The removed Windhawk configuration is not part of this repository. Wallust files are also excluded because Matugen is the active color generator.
 
 ## Installation notes
+
+### Fastfetch
+
+The Fastfetch setup is installed to `%USERPROFILE%\.config\fastfetch`. It uses the
+custom `logo.txt` artwork and keeps the output intentionally compact: identity,
+OS, host, kernel, uptime, window manager, CPU, GPU, memory, disk, shell, and
+terminal. The logo uses the requested ANSI color mapping `3 5 1` through
+Fastfetch's `$1`, `$2`, and `$3` placeholders.
+
+Run `fastfetch` normally after installation. To preview the repository config
+without installing it, replace `__FASTFETCH_DIR__` with the target directory or
+run the installer.
 
 - Copy `komorebi/komorebi.json` to `%USERPROFILE%`. `applications.json` is optional; copy it to `%USERPROFILE%` only if you want these app-specific rules, or create your own file there.
 - Copy `whkd/whkdrc` to `%USERPROFILE%\.config\whkdrc`.
