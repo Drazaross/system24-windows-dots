@@ -37,3 +37,51 @@ Runtime logs such as `yasb.log` and `matugen.log` are ignored. The removed Windh
 - Copy the contents of `yasb/` to `%USERPROFILE%\.config\yasb`.
 - Copy `matugen/config.toml` to `%APPDATA%\matugen\config.toml`.
 - Put wallpapers in `%USERPROFILE%\Pictures\Wallpapers`, then run `.\install.ps1`. The installer replaces the `__WALLPAPERS_PATH__` placeholder because this YASB widget version does not expand `%USERPROFILE%` or `~` in `image_path`.
+
+## Troubleshooting
+
+### Installing Matugen with Cargo
+
+Matugen is distributed as a Rust crate. Installing it with Cargo compiles the Rust binary locally:
+
+```powershell
+cargo install matugen
+```
+
+On Windows, Rust crate compilation may require the Microsoft C++ build toolchain. If `cargo install matugen` fails with linker errors or reports that `link.exe` or a C++ build tool is missing, install **Visual Studio Build Tools** from the official Microsoft installer.
+
+In the Visual Studio Build Tools installer, select:
+
+- **Desktop development with C++**
+- MSVC build tools for the installed architecture
+- A Windows 10 or Windows 11 SDK
+
+After installation:
+
+1. Close and reopen PowerShell.
+2. Verify Rust and Cargo:
+
+   ```powershell
+   rustc --version
+   cargo --version
+   ```
+
+3. Retry the crate installation:
+
+   ```powershell
+   cargo install matugen
+   ```
+
+If Matugen was installed successfully but PowerShell cannot find it, verify that the Cargo binary directory is on `PATH`:
+
+```text
+%USERPROFILE%\.cargo\bin
+```
+
+You can also run the binary directly:
+
+```powershell
+& "$env:USERPROFILE\.cargo\bin\matugen.exe" --version
+```
+
+The Visual Studio Build Tools are only needed to compile Rust crates locally. They are not required at runtime when using an already-built Matugen binary.
