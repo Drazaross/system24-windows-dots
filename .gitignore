@@ -1,0 +1,8 @@
+# Runtime logs
+*.log
+
+# Local/generated Matugen cache
+matugen/cache/
+
+# Personal or machine-local overrides
+local/

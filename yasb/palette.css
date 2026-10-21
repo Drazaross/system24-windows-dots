@@ -1,0 +1,18 @@
+:root {
+    --background: #15130c;
+    --background2: #212017;
+    --accent: #d6c870;
+    --text: #e8e2d5;
+    --accentText: #373100;
+    --hover: #504700;
+    --mutedBG: #2c2a21;
+    --border: #959181;
+    --redFlash: #ffb4ab;
+    --subtext: #ccc6b5;
+
+    --crit: #ffb4ab;
+    --warn: #a7d0b6;
+    --ok: #cfc7a2;
+    --info: #d6c870;
+    --text-muted: #ccc6b5;
+}
