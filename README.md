@@ -22,11 +22,17 @@ in `%USERPROFILE%\Pictures\Wallpapers`.
 
 ### Automated installation
 
-From PowerShell in the repository root, run:
+Install the prerequisites in the previous section, then open PowerShell in the
+repository root and run:
 
 ```powershell
 .\install.ps1
 ```
+
+The script checks for `komorebic`, `whkd`, `yasbc`, `matugen`, and `fastfetch`.
+Missing commands are reported as warnings; the script does not install
+software, modify `PATH`, change execution policy, or require administrator
+access. PowerShell 7 (`pwsh`) and Git are recommended but optional.
 
 The installer:
 
@@ -49,16 +55,44 @@ reviewing them for your machine.
 
 ### Manual installation
 
+Run these commands from the repository root after `install.ps1` completes:
+
 ```powershell
-Copy-Item .\komorebi\komorebi.json $env:USERPROFILE
-Copy-Item .\whkd\whkdrc (Join-Path $env:USERPROFILE ".config\whkdrc")
-Copy-Item .\matugen\config.toml (Join-Path $env:APPDATA "matugen\config.toml")
-Copy-Item .\komorebi\komorebi-matugen.json (Join-Path $env:APPDATA "matugen")
+Copy-Item .\komorebi\komorebi.json $env:USERPROFILE -Force
+New-Item -ItemType Directory -Force `
+  -Path (Join-Path $env:USERPROFILE ".config") | Out-Null
+Copy-Item .\whkd\whkdrc `
+  (Join-Path $env:USERPROFILE ".config\whkdrc") -Force
+Copy-Item .\komorebi\applications.json `
+  (Join-Path $env:USERPROFILE "applications.json") -Force
 ```
 
-Copy `komorebi/applications.json` to `%USERPROFILE%\applications.json` only if
-you want the included application-specific rules. It is optional; you can
-omit it, create your own, or copy only the rules for applications you use.
+The supplied `komorebi.json` references
+`%USERPROFILE%\applications.json`. Copy the repository file if you want the
+included application-specific rules. Otherwise, remove or change
+`app_specific_configuration_path` in your own Komorebi configuration before
+starting Komorebi.
+
+The installer already copies `matugen/config.toml`,
+`komorebi/komorebi-matugen.json`, and the Vencord template to their runtime
+locations. Do not copy those files a second time unless you are repairing an
+installation.
+
+Create the default wallpaper directory and place at least one supported image
+inside it:
+
+```powershell
+$wallpapers = Join-Path $env:USERPROFILE "Pictures\Wallpapers"
+New-Item -ItemType Directory -Force -Path $wallpapers | Out-Null
+```
+
+Generate the initial palette, Komorebi colors, and Vencord override:
+
+```powershell
+$wallpaper = Join-Path $wallpapers "your-wallpaper.jpg"
+& (Join-Path $env:USERPROFILE ".config\yasb\update-matugen.ps1") `
+  -WallpaperPath $wallpaper
+```
 
 After installation, reload the relevant applications:
 
@@ -70,15 +104,11 @@ fastfetch
 
 ### Startup
 
-After installing the configuration, a new user can enable the complete
-Komorebi, WHKD, and YASB startup flow with these commands. Run them from the
-repository root in PowerShell:
+After validating the configuration, enable the complete Komorebi, WHKD, and
+YASB startup flow with these commands. Run them from the repository root in
+PowerShell:
 
 ```powershell
-# Install the main Komorebi configuration and WHKD bindings.
-Copy-Item .\komorebi\komorebi.json $env:USERPROFILE
-Copy-Item .\whkd\whkdrc (Join-Path $env:USERPROFILE ".config\whkdrc")
-
 # Validate the files before enabling startup.
 komorebic check --komorebi-config (Join-Path $env:USERPROFILE "komorebi.json")
 
@@ -104,17 +134,6 @@ start --whkd
 The `--whkd` option uses the WHKD configuration at
 `%USERPROFILE%\.config\whkdrc`. The commands above affect only the current
 Windows user and do not require administrator access.
-
-The rest of the repository can then be installed with:
-
-```powershell
-.\install.ps1
-```
-
-Run `install.ps1` before the startup commands if you want YASB, Fastfetch, and
-Matugen installed first. The Komorebi and WHKD copy commands remain separate
-because the installer intentionally does not overwrite those core
-window-management and global-keybinding files.
 
 ### Vencord System24 theme
 
@@ -266,6 +285,110 @@ generator. Windhawk configuration is also excluded because that experiment was
 removed as unstable.
 
 ## Troubleshooting
+
+### YASB reports that no wallpapers were found
+
+This YASB version does not expand `%USERPROFILE%` or `~` inside the wallpaper
+widget's `image_path`. The repository therefore uses the
+`__WALLPAPERS_PATH__` placeholder, and `install.ps1` replaces it with an
+absolute path such as:
+
+```text
+C:\Users\<user>\Pictures\Wallpapers
+```
+
+If the widget still reports no wallpapers:
+
+1. Confirm the directory exists.
+2. Confirm it contains supported image files such as `.png`, `.jpg`, `.jpeg`,
+   or `.webp`.
+3. Open `%USERPROFILE%\.config\yasb\config.yaml`.
+4. Check that `image_path` contains the absolute wallpaper directory.
+5. Reload YASB:
+
+   ```powershell
+   yasbc reload
+   ```
+
+### Matugen does not update the palette
+
+Check the Matugen log:
+
+```powershell
+Get-Content "$env:USERPROFILE\.config\yasb\matugen.log" -Tail 80
+```
+
+Then verify the required files and commands:
+
+```powershell
+Test-Path "$env:APPDATA\matugen\config.toml"
+Test-Path "$env:APPDATA\matugen\komorebi-matugen.json"
+Get-Command matugen
+matugen --version
+```
+
+The wallpaper path passed to the update script must point to an existing image.
+If Matugen is installed with Cargo but is not found, verify that
+`%USERPROFILE%\.cargo\bin` is on `PATH`, or run the binary directly from that
+directory. The update script also falls back to that path.
+
+### Discord colors do not change
+
+Discord does not live-reload local theme CSS. After Matugen generates
+`system24-matugen.css`, fully restart Discord and make sure the `system24`
+theme is enabled in Vencord.
+
+## Updating and rolling back
+
+### Updating the dotfiles
+
+Pull or copy the latest repository changes, then run:
+
+```powershell
+.\install.ps1
+```
+
+The installer backs up every existing file it replaces using a timestamped
+suffix:
+
+```text
+filename.ext.bak-YYYYMMDD-HHMMSS
+```
+
+After updating, reload the active applications:
+
+```powershell
+yasbc reload
+komorebic reload-configuration
+```
+
+If Discord theme colors changed, restart Discord manually as described above.
+
+### Rolling back an installation
+
+1. Close or stop the affected application.
+2. Find the corresponding `.bak-YYYYMMDD-HHMMSS` file beside the installed
+   configuration.
+3. Copy the backup over the current file after reviewing both files.
+4. Reload the affected application.
+
+For example:
+
+```powershell
+Copy-Item "$env:USERPROFILE\.config\yasb\styles.css.bak-YYYYMMDD-HHMMSS" `
+  "$env:USERPROFILE\.config\yasb\styles.css" -Force
+yasbc reload
+```
+
+To remove the startup entries created by this setup:
+
+```powershell
+komorebic disable-autostart
+yasbc disable-autostart
+```
+
+The installer does not automatically delete backups, generated palettes,
+custom themes, or user configuration files.
 
 ### Installing Matugen with Cargo
 

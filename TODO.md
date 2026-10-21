@@ -2,7 +2,7 @@
 
 ## Installer and setup
 
-- [ ] Expand `install.ps1` into the complete one-run setup script.
+- [x] Expand `install.ps1` into the complete one-run setup script. -> Some parts are kept manual intentionally.
 - [ ] Add dependency checks for Komorebi, WHKD, YASB, Matugen, PowerShell, and Git.
 - [ ] Create required directories before copying files.
 - [ ] Back up existing configuration files before replacing them.
@@ -22,18 +22,18 @@
 
 - [x] Integrate Matugen-generated colors into Komorebi borders, workspace styling, and related colors.
 - [x] Decide whether Komorebi should consume the generated palette directly or use a generated Komorebi config.
-- [ ] Fix and polish the YASB CSS.
-- [ ] Search the stylesheet for inconsistent, unused, or overridden rules.
-- [ ] Add a YASB search widget.
+- [x] Fix and polish the YASB CSS.
+- [x] Search the stylesheet for inconsistent, unused, or overridden rules.
+- [x] Add a YASB search widget.
 - [x] Add YASB todo and notes widgets with System24 styling.
-- [ ] Verify that all generated Matugen colors have readable contrast in YASB and Komorebi.
-- [ ] Decide whether `yasb_colors.css` should remain enabled, be documented as optional, or be removed from the active import chain.
+- [x] Verify that all generated Matugen colors have readable contrast in YASB and Komorebi.
+- [x] Decide whether `yasb_colors.css` should remain enabled, be documented as optional, or be removed from the active import chain.
 
 ## Desktop polish
 
 - [ ] Find or create a better wallpaper collection suited to the System24 theme.
 - [ ] Add wallpaper recommendations and licensing/source notes to the documentation.
-- [ ] Add Zen Browser theming.
+- [x] Add Zen Browser theming. -> Not possible / too much effort
 - [x] Add Matugen-generated colors for the Vencord System24 theme.
 - [x] Assign Discord and Steam to dedicated initial workspaces.
 - [x] Set up Fastfetch with a compact System24-style configuration.
@@ -41,11 +41,11 @@
 
 ## Documentation
 
-- [ ] Document the complete file layout and install destinations.
-- [ ] Document the active wallpaper -> Matugen -> `palette.css` -> YASB pipeline.
-- [ ] Document the optional Komorebi `applications.json`.
-- [ ] Document `yasb_colors.css` and its relationship to Matugen.
-- [ ] Document dependency installation and Windows-specific requirements.
-- [ ] Add troubleshooting for common YASB wallpaper path and Matugen errors.
-- [ ] Add update and rollback instructions.
+- [x] Document the complete file layout and install destinations.
+- [x] Document the active wallpaper -> Matugen -> `palette.css` -> YASB pipeline.
+- [x] Document the optional Komorebi `applications.json`.
+- [x] Document `yasb_colors.css` and its relationship to Matugen.
+- [x] Document dependency installation and Windows-specific requirements.
+- [x] Add troubleshooting for common YASB wallpaper path and Matugen errors.
+- [x] Add update and rollback instructions.
 - [ ] Add screenshots or examples after the theme stabilizes.

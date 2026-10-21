@@ -8,6 +8,29 @@ $vencordThemesRoot = Join-Path $env:APPDATA "Vencord\themes"
 $wallpapersPath = Join-Path $env:USERPROFILE "Pictures\Wallpapers"
 $backupStamp = Get-Date -Format "yyyyMMdd-HHmmss"
 
+function Test-Dependency {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Name,
+        [Parameter(Mandatory = $true)]
+        [string]$Purpose,
+        [switch]$Optional
+    )
+
+    $command = Get-Command $Name -ErrorAction SilentlyContinue
+    if ($null -ne $command) {
+        Write-Host "Found $Name at $($command.Source)"
+        return $true
+    }
+
+    if ($Optional) {
+        Write-Warning "$Name was not found. $Purpose"
+    } else {
+        Write-Warning "$Name was not found. $Purpose"
+    }
+    return $false
+}
+
 function Backup-IfPresent {
     param(
         [Parameter(Mandatory = $true)]
@@ -38,6 +61,25 @@ function Install-File {
 
     Backup-IfPresent -Path $Destination
     Copy-Item -LiteralPath $Source -Destination $Destination -Force
+}
+
+$missingDependencies = [System.Collections.Generic.List[string]]::new()
+$dependencies = @(
+    @{ Name = "komorebic"; Purpose = "Install Komorebi before starting the window manager." },
+    @{ Name = "whkd"; Purpose = "Install WHKD before using the supplied hotkey configuration." },
+    @{ Name = "yasbc"; Purpose = "Install YASB Reborn before reloading or enabling the bar." },
+    @{ Name = "matugen"; Purpose = "Install Matugen before generating wallpaper-derived colors." },
+    @{ Name = "fastfetch"; Purpose = "Install Fastfetch before running the supplied system summary." },
+    @{ Name = "pwsh"; Purpose = "PowerShell 7 is recommended for the update scripts."; Optional = $true },
+    @{ Name = "git"; Purpose = "Git is optional, but recommended for updating the dotfiles."; Optional = $true }
+)
+
+foreach ($dependency in $dependencies) {
+    $found = Test-Dependency -Name $dependency.Name -Purpose $dependency.Purpose `
+        -Optional:$dependency.Optional
+    if (-not $found -and -not $dependency.Optional) {
+        $missingDependencies.Add($dependency.Name)
+    }
 }
 
 New-Item -ItemType Directory -Force -Path $yasbRoot, $fastfetchRoot, $matugenRoot, $vencordThemesRoot | Out-Null
@@ -87,3 +129,21 @@ Write-Host "Installed YASB configuration to $yasbRoot"
 Write-Host "Installed Fastfetch configuration to $fastfetchRoot"
 Write-Host "Installed Matugen configuration to $matugenRoot"
 Write-Host "Wallpaper directory: $wallpapersPath"
+
+Write-Host ""
+Write-Host "Remaining setup steps:"
+Write-Host "1. Copy komorebi\komorebi.json to $env:USERPROFILE\komorebi.json."
+Write-Host "2. Copy whkd\whkdrc to $env:USERPROFILE\.config\whkdrc."
+Write-Host "3. Copy komorebi\applications.json if you want the application rules."
+Write-Host "4. Place a wallpaper in $wallpapersPath."
+Write-Host "5. Generate colors with:"
+Write-Host "   & '$yasbRoot\update-matugen.ps1' -WallpaperPath '$wallpapersPath\your-wallpaper.jpg'"
+Write-Host "6. Validate and start Komorebi with komorebic check and komorebic start --whkd."
+Write-Host "7. Reload YASB with yasbc reload, then enable startup with:"
+Write-Host "   komorebic enable-autostart"
+Write-Host "   yasbc enable-autostart"
+
+if ($missingDependencies.Count -gt 0) {
+    Write-Warning "Missing required commands: $($missingDependencies -join ', ')"
+    Write-Warning "Install them before starting the related parts of this setup."
+}
