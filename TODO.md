@@ -19,8 +19,8 @@
 
 ## Theming integrations
 
-- [ ] Integrate Matugen-generated colors into Komorebi borders, workspace styling, and related colors.
-- [ ] Decide whether Komorebi should consume the generated palette directly or use a generated Komorebi config.
+- [x] Integrate Matugen-generated colors into Komorebi borders, workspace styling, and related colors.
+- [x] Decide whether Komorebi should consume the generated palette directly or use a generated Komorebi config.
 - [ ] Fix and polish the YASB CSS.
 - [ ] Search the stylesheet for inconsistent, unused, or overridden rules.
 - [ ] Add a YASB search widget.

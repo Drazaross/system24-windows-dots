@@ -70,7 +70,7 @@ widgets:
       menu_list:
       - title: User Home
         path: '~'
-      - title: Download
+      - title: Downloads
         path: ~\Downloads
       - title: Documents
         path: ~\Documents
