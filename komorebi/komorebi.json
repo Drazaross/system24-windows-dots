@@ -6,11 +6,11 @@
   "default_workspace_padding": 2,
   "default_container_padding": 2,
   "border": true,
-  "border-implementation": "Native",
-  "boarder_style": "System",
-  "border_width": 2,
+  "border_implementation": "Komorebi",
+  "border_style": "System",
+  "border_width": 4,
   "border_offset": 0,
-  "boarder_colors": {
+  "border_colours": {
     "single": "#d6c870",
     "stack": "#cfc7a2",
     "floating": "#a7d0b6",
@@ -20,6 +20,20 @@
   "mouse_follows_focus": true,
   "transparency": true,
   "transparency_alpha": 230,
+  "initial_workspace_rules": [
+    {
+      "identifier": "exe",
+      "id": "Discord.exe",
+      "monitor": 0,
+      "workspace": 8
+    },
+    {
+      "identifier": "exe",
+      "id": "steam.exe",
+      "monitor": 0,
+      "workspace": 9
+    }
+  ],
   "animation": {
     "enabled": true,
     "duration": 400,
@@ -28,11 +42,6 @@
       "movement": "EaseOutBack",
       "transparency": "Linear"
     }
-  },
-  "theme": {
-    "palette": "Catppuccin",
-    "name": "Mocha",
-    "accent": "Mocha"
   },
   "stackbar": {
     "height": 24,

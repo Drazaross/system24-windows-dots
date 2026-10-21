@@ -36,12 +36,16 @@ The installer:
 3. Copies the Fastfetch files to `%USERPROFILE%\.config\fastfetch`.
 4. Copies the Matugen configuration and Komorebi Matugen template to
    `%APPDATA%\matugen`.
-5. Replaces `__WALLPAPERS_PATH__` and `__FASTFETCH_DIR__` with the current
+5. Links the existing Vencord System24 theme to the generated local override,
+   when `%APPDATA%\Vencord\themes\system24.theme.css` exists.
+6. Replaces `__WALLPAPERS_PATH__` and `__FASTFETCH_DIR__` with the current
    user's paths.
+7. Creates a timestamped `.bak-YYYYMMDD-HHMMSS` backup before replacing any
+   existing file.
 
-The script does not currently install or overwrite the main Komorebi,
-WHKD, or optional `applications.json` files. Copy those manually as described
-below, after reviewing them for your machine.
+The script does not install or overwrite the main Komorebi, WHKD, or optional
+`applications.json` files. Copy those manually as described below, after
+reviewing them for your machine.
 
 ### Manual installation
 
@@ -63,6 +67,68 @@ yasbc reload
 komorebic reload-configuration
 fastfetch
 ```
+
+### Startup
+
+After installing the configuration, a new user can enable the complete
+Komorebi, WHKD, and YASB startup flow with these commands. Run them from the
+repository root in PowerShell:
+
+```powershell
+# Install the main Komorebi configuration and WHKD bindings.
+Copy-Item .\komorebi\komorebi.json $env:USERPROFILE
+Copy-Item .\whkd\whkdrc (Join-Path $env:USERPROFILE ".config\whkdrc")
+
+# Validate the files before enabling startup.
+komorebic check --komorebi-config (Join-Path $env:USERPROFILE "komorebi.json")
+
+# Register Komorebi and YASB for the current Windows user.
+komorebic enable-autostart
+yasbc enable-autostart
+
+# Make Komorebi start WHKD through the same Startup-folder shortcut.
+$startup = [Environment]::GetFolderPath("Startup")
+$shortcutPath = Join-Path $startup "komorebi.lnk"
+$shell = New-Object -ComObject WScript.Shell
+$shortcut = $shell.CreateShortcut($shortcutPath)
+$shortcut.Arguments = "start --whkd"
+$shortcut.Save()
+```
+
+The generated shortcut should target `komorebic-no-console.exe` and contain:
+
+```text
+start --whkd
+```
+
+The `--whkd` option uses the WHKD configuration at
+`%USERPROFILE%\.config\whkdrc`. The commands above affect only the current
+Windows user and do not require administrator access.
+
+The rest of the repository can then be installed with:
+
+```powershell
+.\install.ps1
+```
+
+Run `install.ps1` before the startup commands if you want YASB, Fastfetch, and
+Matugen installed first. The Komorebi and WHKD copy commands remain separate
+because the installer intentionally does not overwrite those core
+window-management and global-keybinding files.
+
+The Komorebi command creates `komorebi.lnk` in the user's Startup folder.
+YASB registers its own per-user startup entry. These commands do not create a
+Windows service or change system-wide startup settings.
+
+To remove the startup entries later:
+
+```powershell
+komorebic disable-autostart
+yasbc disable-autostart
+```
+
+WHKD is started by Komorebi with `komorebic start --whkd`, rather than through
+a separate WHKD startup shortcut.
 
 ## Repository layout
 
@@ -110,8 +176,10 @@ Every tracked file is listed below with its purpose.
 
 ### `matugen/`
 
-- `config.toml` - Matugen template mappings for generating the YASB palette
-  and Komorebi configuration.
+- `config.toml` - Matugen template mappings for generating the YASB palette,
+  Komorebi configuration, and Vencord System24 override.
+- `system24-vencord.css` - Matugen template that maps Material color roles to
+  the System24 Discord theme variables.
 
 ### `fastfetch/`
 
@@ -132,16 +200,31 @@ Every tracked file is listed below with its purpose.
 7. `yasb/styles.css` imports `palette.css`.
 8. The update script reloads Komorebi after generation; YASB watches its
    configuration directory and reloads stylesheet changes.
+9. Matugen writes a Vencord System24 override to
+   `%APPDATA%\Vencord\themes\system24-matugen.css`.
+10. If Discord is already running, the wallpaper script restarts its running
+    Discord processes so Vencord reloads the generated theme. Discord is not
+    launched when it was already closed.
 
 `yasb_colors.css` is separate from the Matugen pipeline. YASB generates it
 when `system_colors: true` is enabled, and it supplies Windows system color
 variables. Matugen remains the active source for the wallpaper-derived
 `palette.css` colors.
 
+The Vencord System24 theme remains the upstream theme file. The generated
+`system24-matugen.css` file overrides its `:root` colors after the upstream
+theme import, so Discord receives the same wallpaper-derived palette without
+replacing the upstream theme.
+
 Komorebi uses the documented British spellings `border_colours` and
 `border_style`. The `theme` block is intentionally omitted because defining a
 theme prevents generated `border_colours` from taking effect. This setup uses
 `border_implementation: "Komorebi"` and a border width of `4`.
+
+The main Komorebi configuration sends newly created `Discord.exe` windows to
+workspace IX and `steam.exe` windows to workspace X. Komorebi workspace indexes
+are zero-based, so IX is configured as `8` and X as `9`. These are initial
+workspace rules: users can still move the windows afterward.
 
 ## Portability notes
 

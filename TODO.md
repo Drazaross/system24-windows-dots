@@ -14,7 +14,8 @@
 - [ ] Install Matugen configuration to `%APPDATA%\matugen`.
 - [ ] Resolve the wallpaper path placeholder for each user.
 - [ ] Ask for or detect the user's wallpaper directory.
-- [ ] Add optional startup integration for Komorebi, WHKD, and YASB.
+- [x] Add startup integration instructions for Komorebi and YASB.
+- [x] Add WHKD startup through the Komorebi `start --whkd` launch mode.
 - [ ] Print clear post-install instructions and missing dependency warnings.
 
 ## Theming integrations
@@ -33,7 +34,8 @@
 - [ ] Find or create a better wallpaper collection suited to the System24 theme.
 - [ ] Add wallpaper recommendations and licensing/source notes to the documentation.
 - [ ] Add Zen Browser theming.
-- [ ] Add Discord theming.
+- [x] Add Matugen-generated colors for the Vencord System24 theme.
+- [x] Assign Discord and Steam to dedicated initial workspaces.
 - [x] Set up Fastfetch with a compact System24-style configuration.
 - [ ] Ensure Fastfetch colors can use the Matugen palette where practical.
 

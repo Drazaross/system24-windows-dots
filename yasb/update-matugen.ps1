@@ -48,6 +48,28 @@ try {
     } else {
         Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format o) komorebic was not found; generated config was not reloaded."
     }
+
+    $discordProcesses = @(Get-Process -Name Discord -ErrorAction SilentlyContinue)
+    if ($discordProcesses.Count -gt 0) {
+        $discordPath = $discordProcesses |
+            Where-Object { -not [string]::IsNullOrWhiteSpace($_.Path) } |
+            Select-Object -First 1 -ExpandProperty Path
+
+        if ([string]::IsNullOrWhiteSpace($discordPath)) {
+            throw "Discord is running, but its executable path could not be determined."
+        }
+
+        foreach ($process in $discordProcesses) {
+            Stop-Process -Id $process.Id -ErrorAction Stop
+        }
+
+        foreach ($process in $discordProcesses) {
+            Wait-Process -Id $process.Id -Timeout 15 -ErrorAction SilentlyContinue
+        }
+
+        Start-Process -FilePath $discordPath | Out-Null
+        Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format o) Restarted Discord to load the generated theme."
+    }
 } catch {
     $message = "$(Get-Date -Format o) Matugen update failed: $($_ | Out-String)"
     Add-Content -LiteralPath $logPath -Value $message
