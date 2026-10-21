@@ -186,7 +186,7 @@ widgets:
     options:
       label: '{win[title]}'
       label_alt: '{win[title]}'
-      label_no_window: ''
+      label_no_window: '(• ε •)'
       label_icon: true
       label_icon_size: 16
       max_length: 32
