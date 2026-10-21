@@ -54,12 +54,11 @@ bars:
       - cpu
       - battery
       - wifi
+      - volume
       - lines
       - wallpapers
       - todo
       - notes
-      - lines
-      - volume
       - lines
       - notifications
       - language
