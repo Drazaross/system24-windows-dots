@@ -3,5 +3,5 @@ caching = false
 source_color_index = 0
 
 [templates.yasb]
-input_path = 'C:\Users\ankit\.config\yasb\matugen-yasb.css'
-output_path = 'C:\Users\ankit\.config\yasb\palette.css'
+input_path = '~/.config/yasb/matugen-yasb.css'
+output_path = '~/.config/yasb/palette.css'

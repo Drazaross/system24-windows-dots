@@ -1,0 +1,20 @@
+$ErrorActionPreference = "Stop"
+
+$repoRoot = $PSScriptRoot
+$yasbRoot = Join-Path $env:USERPROFILE ".config\yasb"
+$matugenRoot = Join-Path $env:APPDATA "matugen"
+$wallpapersPath = Join-Path $env:USERPROFILE "Pictures\Wallpapers"
+
+New-Item -ItemType Directory -Force -Path $yasbRoot, $matugenRoot | Out-Null
+
+Copy-Item -Path (Join-Path $repoRoot "yasb\*") -Destination $yasbRoot -Force
+Copy-Item -LiteralPath (Join-Path $repoRoot "matugen\config.toml") -Destination $matugenRoot -Force
+
+$yasbConfigPath = Join-Path $yasbRoot "config.yaml"
+$yasbConfig = Get-Content -Raw -LiteralPath $yasbConfigPath
+$yasbConfig = $yasbConfig.Replace("__WALLPAPERS_PATH__", $wallpapersPath)
+Set-Content -LiteralPath $yasbConfigPath -Value $yasbConfig -NoNewline
+
+Write-Host "Installed YASB configuration to $yasbRoot"
+Write-Host "Installed Matugen configuration to $matugenRoot"
+Write-Host "Wallpaper directory: $wallpapersPath"

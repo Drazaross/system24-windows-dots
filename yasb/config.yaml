@@ -77,7 +77,7 @@ widgets:
       - title: Pictures
         path: ~\Pictures
       - title: Wallpapers
-        path: C:\Users\ankit\windows-dotfiles\Wallpapers
+        path: "__WALLPAPERS_PATH__"
       system_menu: true
       power_menu: false
       blur: false
@@ -299,7 +299,7 @@ widgets:
       label: "<span>\udb83\udc8d</span>"
       change_automatically: false
     # Example path to folder with images. Can be a single string or a list of strings.
-      image_path: "C:\\Users\\ankit\\windows-dotfiles\\Wallpapers" 
+      image_path: "__WALLPAPERS_PATH__"
       engine:
         enabled: true
         animation: "slide_top" # circle/slide_top/diamond/split
@@ -314,7 +314,7 @@ widgets:
         on_middle: "do_nothing"
         on_right: "change_wallpaper"
       run_after:
-        - 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\Users\ankit\.config\yasb\update-matugen.ps1" "{image}"'
+        - 'powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%USERPROFILE%\.config\yasb\update-matugen.ps1" "{image}"'
       keybindings:
         - keys: "ctrl+alt+w"
           action: "toggle_gallery"
