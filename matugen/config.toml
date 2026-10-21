@@ -5,3 +5,7 @@ source_color_index = 0
 [templates.yasb]
 input_path = '~/.config/yasb/matugen-yasb.css'
 output_path = '~/.config/yasb/palette.css'
+
+[templates.komorebi]
+input_path = './komorebi-matugen.json'
+output_path = '~/komorebi.json'

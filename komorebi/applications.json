@@ -1,5 +1,14 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.asc.json",
+  "Claude": {
+    "manage": [
+      {
+        "kind": "Exe",
+        "id": "claude.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
   "1Password": {
     "ignore": [
       {

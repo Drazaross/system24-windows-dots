@@ -16,7 +16,11 @@ Configuration files for a Windows desktop built around Komorebi, WHKD, YASB, and
 2. `yasb/update-matugen.ps1` runs Matugen with that image.
 3. Matugen reads `yasb/matugen-yasb.css`.
 4. Matugen writes `yasb/palette.css`.
-5. `yasb/styles.css` imports `palette.css`.
+5. Matugen reads `komorebi/komorebi-matugen.json`.
+6. Matugen writes the generated Komorebi config to `%USERPROFILE%\komorebi.json`.
+7. `yasb/styles.css` imports `palette.css`, and the wallpaper script reloads Komorebi after generation.
+
+Komorebi uses `border_colours` (British spelling) and `border_style`. The `theme` block is intentionally omitted because Komorebi documents that defining a theme disables `border_colours`. `border_implementation` must use a value supported by the installed Komorebi version; this setup uses `Komorebi`.
 
 ## Komorebi application rules
 

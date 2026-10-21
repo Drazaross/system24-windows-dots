@@ -9,6 +9,7 @@ New-Item -ItemType Directory -Force -Path $yasbRoot, $matugenRoot | Out-Null
 
 Copy-Item -Path (Join-Path $repoRoot "yasb\*") -Destination $yasbRoot -Force
 Copy-Item -LiteralPath (Join-Path $repoRoot "matugen\config.toml") -Destination $matugenRoot -Force
+Copy-Item -LiteralPath (Join-Path $repoRoot "komorebi\komorebi-matugen.json") -Destination $matugenRoot -Force
 
 $yasbConfigPath = Join-Path $yasbRoot "config.yaml"
 $yasbConfig = Get-Content -Raw -LiteralPath $yasbConfigPath

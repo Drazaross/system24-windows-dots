@@ -38,6 +38,16 @@ try {
     if ($LASTEXITCODE -ne 0) {
         throw "Matugen exited with code $LASTEXITCODE"
     }
+
+    $komorebic = Get-Command komorebic -ErrorAction SilentlyContinue
+    if ($null -ne $komorebic) {
+        & $komorebic.Source reload-configuration *>> $logPath
+        if ($LASTEXITCODE -ne 0) {
+            throw "komorebic reload-configuration exited with code $LASTEXITCODE"
+        }
+    } else {
+        Add-Content -LiteralPath $logPath -Value "$(Get-Date -Format o) komorebic was not found; generated config was not reloaded."
+    }
 } catch {
     $message = "$(Get-Date -Format o) Matugen update failed: $($_ | Out-String)"
     Add-Content -LiteralPath $logPath -Value $message
