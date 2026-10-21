@@ -1800,6 +1800,327 @@ which is 16 pixels same as the other sections. */
     border-radius: 0;
 }
 
+/* Todo and Notes */
+.todo-widget,
+.notes-widget {
+    padding: 0 6px;
+}
+
+.todo-widget .icon,
+.notes-widget .icon {
+    color: var(--accent);
+    padding: 0;
+}
+
+.todo-widget .label,
+.notes-widget .label {
+    color: var(--text);
+    padding: 0;
+}
+
+.todo-menu,
+.notes-menu {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-family: var(--system-font);
+}
+
+.todo-menu {
+    min-width: 380px;
+    max-width: 380px;
+    min-height: 460px;
+    max-height: 460px;
+}
+
+.notes-menu {
+    min-width: 360px;
+    max-width: 360px;
+    min-height: 420px;
+    max-height: 520px;
+}
+
+.todo-menu .header,
+.notes-menu .notes-header {
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+    padding: 8px;
+}
+
+.todo-menu .header .add-task-button,
+.todo-menu .header .tab-buttons,
+.notes-menu .notes-header .float-button,
+.notes-menu .notes-header .close-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: var(--text);
+    min-height: 28px;
+    max-height: 28px;
+    padding: 4px 8px;
+}
+
+.todo-menu .header .add-task-button:hover,
+.todo-menu .header .tab-buttons:hover,
+.todo-menu .header .tab-buttons:checked,
+.notes-menu .notes-header .float-button:hover,
+.notes-menu .notes-header .close-button:hover {
+    background-color: var(--hover);
+    color: var(--accentText);
+}
+
+.todo-menu .header .tab-buttons.in-progress:checked {
+    color: var(--accent);
+}
+
+.todo-menu .header .tab-buttons.completed:checked {
+    color: var(--subtext);
+}
+
+.todo-menu .header .tab-buttons.sort {
+    min-width: 28px;
+    max-width: 28px;
+    padding: 0;
+}
+
+.todo-menu .no-tasks {
+    color: var(--subtext);
+    padding-top: 12px;
+}
+
+.todo-menu .no-tasks-icon {
+    color: var(--accent);
+    font-size: 56px;
+    padding-top: 40px;
+}
+
+.todo-menu .task-item {
+    background-color: var(--mutedBG);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    margin: 0 10px 8px;
+    padding: 8px 0;
+}
+
+.todo-menu .task-item:hover,
+.todo-menu .task-item.expanded {
+    background-color: var(--hover);
+    border-color: var(--accent);
+}
+
+.todo-menu .task-item.drop-highlight,
+.todo-menu .task-item.drop-highlight:hover {
+    background-color: var(--hover);
+    border-color: var(--accent);
+}
+
+.todo-menu .task-item .title,
+.todo-menu .task-item .description {
+    color: var(--text);
+    padding: 0 8px 6px;
+}
+
+.todo-menu .task-item .title {
+    font-weight: 600;
+}
+
+.todo-menu .task-item.completed .title,
+.todo-menu .task-item.completed .description {
+    color: var(--subtext);
+    text-decoration: line-through;
+}
+
+.todo-menu .task-checkbox {
+    background-color: transparent;
+    border: none;
+    color: var(--text);
+    margin-left: 10px;
+}
+
+.todo-menu .task-checkbox:checked {
+    color: var(--accent);
+}
+
+.todo-menu .task-info-row {
+    color: var(--subtext);
+    margin: 0 8px 6px;
+}
+
+.todo-menu .task-info-row .date-text,
+.todo-menu .task-info-row .category-text {
+    color: var(--subtext);
+    margin-right: 10px;
+}
+
+.todo-menu .task-info-row .date-icon,
+.todo-menu .task-info-row .category-icon {
+    color: var(--accent);
+}
+
+.todo-menu .task-info-row .category-text.important,
+.todo-menu .task-info-row .category-icon.important {
+    color: var(--crit);
+}
+
+.todo-menu .task-info-row .category-text.urgent,
+.todo-menu .task-info-row .category-icon.urgent {
+    color: var(--warn);
+}
+
+.todo-menu .task-info-row .category-text.soon,
+.todo-menu .task-info-row .category-icon.soon,
+.todo-menu .task-info-row .category-text.today,
+.todo-menu .task-info-row .category-icon.today {
+    color: var(--accent);
+}
+
+.todo-menu .task-info-row .edit-task-button,
+.todo-menu .task-info-row .delete-task-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: var(--subtext);
+    padding: 3px 6px;
+}
+
+.todo-menu .task-info-row .edit-task-button:hover,
+.todo-menu .task-info-row .delete-task-button:hover {
+    background-color: var(--hover);
+    color: var(--accentText);
+}
+
+.todo-menu .app-dialog {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.todo-menu .app-dialog .title-field,
+.todo-menu .app-dialog .desc-field {
+    background-color: var(--background2);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--text);
+    padding: 6px;
+}
+
+.todo-menu .app-dialog .title-field:focus,
+.todo-menu .app-dialog .desc-field:focus {
+    border-color: var(--accent);
+}
+
+.todo-menu .app-dialog .button,
+.todo-menu .app-dialog .category-button {
+    background-color: var(--mutedBG);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--text);
+    padding: 5px 10px;
+}
+
+.todo-menu .app-dialog .button:hover,
+.todo-menu .app-dialog .category-button:hover,
+.todo-menu .app-dialog .category-button:checked {
+    background-color: var(--hover);
+    border-color: var(--accent);
+    color: var(--accentText);
+}
+
+.notes-menu.floating {
+    min-width: 640px;
+    max-width: 640px;
+}
+
+.notes-menu .notes-header .header-title {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.notes-menu .notes-header .float-button,
+.notes-menu .notes-header .close-button {
+    font-family: "Segoe Fluent Icons";
+    min-width: 28px;
+    max-width: 28px;
+}
+
+.notes-menu .note-item {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px;
+}
+
+.notes-menu .note-item:hover {
+    background-color: var(--hover);
+}
+
+.notes-menu .note-item .icon {
+    color: var(--accent);
+    padding: 0 4px;
+}
+
+.notes-menu .note-item .title {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.notes-menu .note-item .date {
+    color: var(--subtext);
+}
+
+.notes-menu .empty-list {
+    color: var(--subtext);
+    padding: 16px 0;
+}
+
+.notes-menu .scroll-area {
+    background-color: transparent;
+    border: none;
+}
+
+.notes-menu .add-button,
+.notes-menu .cancel-button {
+    background-color: var(--mutedBG);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--text);
+    padding: 6px 10px;
+}
+
+.notes-menu .add-button:hover,
+.notes-menu .cancel-button:hover {
+    background-color: var(--hover);
+    border-color: var(--accent);
+    color: var(--accentText);
+}
+
+.notes-menu .note-input {
+    background-color: var(--background2);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    color: var(--text);
+    padding: 6px;
+}
+
+.notes-menu .note-input:focus {
+    border-color: var(--accent);
+}
+
+.notes-menu .delete-button,
+.notes-menu .copy-button,
+.notes-menu .input-copy-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    color: var(--subtext);
+}
+
+.notes-menu .delete-button:hover,
+.notes-menu .copy-button:hover,
+.notes-menu .input-copy-button:hover {
+    background-color: var(--hover);
+    color: var(--accentText);
+}
 
 /* =====================================================================
    System24-style popups: flat, square, 1px border, accent bar on hover.

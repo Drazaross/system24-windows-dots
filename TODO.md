@@ -24,7 +24,7 @@
 - [ ] Fix and polish the YASB CSS.
 - [ ] Search the stylesheet for inconsistent, unused, or overridden rules.
 - [ ] Add a YASB search widget.
-- [ ] Add a YASB todo/notes widget or determine the preferred notes integration.
+- [x] Add YASB todo and notes widgets with System24 styling.
 - [ ] Verify that all generated Matugen colors have readable contrast in YASB and Komorebi.
 - [ ] Decide whether `yasb_colors.css` should remain enabled, be documented as optional, or be removed from the active import chain.
 
