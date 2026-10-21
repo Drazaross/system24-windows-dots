@@ -1005,14 +1005,14 @@ Example: "Windows Media" becomes "windows-media" */
 	color: var(--accent);
 }
 .quick-launch-popup .search .search-icon {
-	font-family: var(--icons-font);
+	font-family: "Segoe Fluent Icons";
 	font-size: 18px;
 	color: var(--text);
 	padding-right: 8px;
 	min-width: 18px;
 }
 .quick-launch-popup .search .search-submit-icon {
-	font-family: var(--icons-font);
+	font-family: "Segoe Fluent Icons";
 	font-size: 18px;
 	color: var(--text);
 	min-width: 18px;
