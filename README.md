@@ -1,6 +1,6 @@
 # System24 Windows dots
 
-Configuration files for a Windows desktop built around Komorebi, WHKD, YASB, and Matugen.
+Configuration files for a Windows desktop theme inspired by the System24 theme from Vencord & Text theme from Spicetify. Built around Komorebi, WHKD, YASB, and Matugen.
 
 ## Layout
 
