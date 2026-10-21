@@ -20,20 +20,6 @@
   "mouse_follows_focus": true,
   "transparency": true,
   "transparency_alpha": 230,
-  "initial_workspace_rules": [
-    {
-      "identifier": "exe",
-      "id": "Discord.exe",
-      "monitor": 0,
-      "workspace": 8
-    },
-    {
-      "identifier": "exe",
-      "id": "steam.exe",
-      "monitor": 0,
-      "workspace": 9
-    }
-  ],
   "animation": {
     "enabled": true,
     "duration": 400,

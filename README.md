@@ -227,9 +227,6 @@ Every tracked file is listed below with its purpose.
    configuration directory and reloads stylesheet changes.
 9. Matugen writes a Vencord System24 override to
    `%APPDATA%\Vencord\themes\system24-matugen.css`.
-10. If Discord is already running, the wallpaper script restarts its running
-    Discord processes so Vencord reloads the generated theme. Discord is not
-    launched when it was already closed.
 
 `yasb_colors.css` is separate from the Matugen pipeline. YASB generates it
 when `system_colors: true` is enabled, and it supplies Windows system color
@@ -241,15 +238,13 @@ The Vencord System24 theme remains the upstream theme file. The generated
 theme import, so Discord receives the same wallpaper-derived palette without
 replacing the upstream theme.
 
+Discord does not live-reload local theme CSS changes. After changing the
+wallpaper, fully restart Discord manually for the generated colors to appear.
+
 Komorebi uses the documented British spellings `border_colours` and
 `border_style`. The `theme` block is intentionally omitted because defining a
 theme prevents generated `border_colours` from taking effect. This setup uses
 `border_implementation: "Komorebi"` and a border width of `4`.
-
-The main Komorebi configuration sends newly created `Discord.exe` windows to
-workspace IX and `steam.exe` windows to workspace X. Komorebi workspace indexes
-are zero-based, so IX is configured as `8` and X as `9`. These are initial
-workspace rules: users can still move the windows afterward.
 
 ## Portability notes
 
