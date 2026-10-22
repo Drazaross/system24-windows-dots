@@ -10,8 +10,8 @@ Matugen, and Fastfetch.
 
 Install the applications below before applying the configuration:
 
-- [Komorebi](https://github.com/LGUG2/komorebi) for tiling and window borders.
-- [WHKD](https://github.com/LGUG2/whkd) for hotkeys.
+- [Komorebi](https://github.com/lgug2z/komorebi) for tiling and window borders.
+- [WHKD](https://github.com/LGUG2Z/whkd) for hotkeys.
 - [YASB Reborn](https://github.com/amnweb/yasb) for the status bar.
 - [Matugen](https://github.com/InioX/matugen) for wallpaper-derived colors.
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch) for the system summary.
