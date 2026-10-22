@@ -265,6 +265,31 @@ Komorebi uses the documented British spellings `border_colours` and
 theme prevents generated `border_colours` from taking effect. This setup uses
 `border_implementation: "Komorebi"` and a border width of `4`.
 
+### Discord and Steam workspace mapping
+
+The main Komorebi configuration keeps application workspace rules inside the
+corresponding workspace definitions:
+
+- Discord is assigned to workspace `IX` using an executable rule that contains
+  `Discord`.
+- Steam is assigned to workspace `X` using an exact executable match for
+  `steamwebhelper.exe`.
+
+Steam uses `steamwebhelper.exe` because the visible Steam client window is
+created by that process; `steam.exe` is the launcher/background process and
+usually has no visible main window. To inspect the executable associated with
+currently visible windows, run:
+
+```powershell
+komorebic visible-windows
+```
+
+Keep the same workspace rules in
+`komorebi/komorebi-matugen.json`. Matugen regenerates
+`%USERPROFILE%\komorebi.json` whenever the wallpaper changes, so adding a rule
+only to the live generated file causes it to disappear on the next palette
+update.
+
 ## Portability notes
 
 - The repository uses `__WALLPAPERS_PATH__` because this installed YASB

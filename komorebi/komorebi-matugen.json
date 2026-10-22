@@ -49,8 +49,26 @@
         { "name": "VI", "layout": "BSP" },
         { "name": "VII", "layout": "BSP" },
         { "name": "VIII", "layout": "BSP" },
-        { "name": "IX", "layout": "BSP" },
-        { "name": "X", "layout": "BSP" }
+        { "name": "IX",
+          "layout": "BSP",
+          "workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "Discord",
+              "matching_strategy": "Contains"
+            }
+          ]
+        },
+        { "name": "X",
+          "layout": "BSP",
+          "workspace_rules": [
+            {
+              "kind": "Exe",
+              "id": "steamwebhelper.exe",
+              "matching_strategy": "Equals"
+            }
+          ]
+        }
       ]
     }
   ]
