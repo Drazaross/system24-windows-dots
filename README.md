@@ -229,6 +229,8 @@ Every tracked file is listed below with its purpose.
 
 - `config.jsonc` - Compact Fastfetch module list and System24 color settings
   with a portable logo path placeholder.
+- `config-matugen.jsonc` - Matugen template that generates Fastfetch logo,
+  title, key, and output colors from the active wallpaper palette.
 - `logo.txt` - Custom Fastfetch ASCII artwork using the requested `3 5 1`
   color mapping through `$1`, `$2`, and `$3` placeholders.
 
@@ -246,6 +248,8 @@ Every tracked file is listed below with its purpose.
    configuration directory and reloads stylesheet changes.
 9. Matugen writes a Vencord System24 override to
    `%APPDATA%\Vencord\themes\system24-matugen.css`.
+10. Matugen writes the wallpaper-derived Fastfetch colors to
+    `%USERPROFILE%\.config\fastfetch\config.jsonc`.
 
 `yasb_colors.css` is separate from the Matugen pipeline. YASB generates it
 when `system_colors: true` is enabled, and it supplies Windows system color
@@ -256,6 +260,12 @@ The Vencord System24 theme remains the upstream theme file. The generated
 `system24-matugen.css` file overrides its `:root` colors after the upstream
 theme import, so Discord receives the same wallpaper-derived palette without
 replacing the upstream theme.
+
+Fastfetch supports explicit color values, so it uses the same Matugen palette
+when the wallpaper pipeline has generated its configuration. The static
+`fastfetch/config.jsonc` remains a fallback until the first successful Matugen
+update. Run `fastfetch` after changing the wallpaper to view the updated
+colors.
 
 Discord does not live-reload local theme CSS changes. The Matugen update script
 automatically restarts Discord only when Discord was already running before the

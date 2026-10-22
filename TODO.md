@@ -37,7 +37,7 @@
 - [x] Add Matugen-generated colors for the Vencord System24 theme.
 - [x] Assign Discord and Steam to dedicated initial workspaces.
 - [x] Set up Fastfetch with a compact System24-style configuration.
-- [ ] Ensure Fastfetch colors can use the Matugen palette where practical.
+- [x] Ensure Fastfetch colors can use the Matugen palette where practical.
 
 ## Documentation
 

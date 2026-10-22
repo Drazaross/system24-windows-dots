@@ -13,3 +13,7 @@ output_path = '~/komorebi.json'
 [templates.vencord]
 input_path = './system24-vencord.css'
 output_path = '../Vencord/themes/system24-matugen.css'
+
+[templates.fastfetch]
+input_path = '../../../.config/fastfetch/config-matugen.jsonc'
+output_path = '~/.config/fastfetch/config.jsonc'
