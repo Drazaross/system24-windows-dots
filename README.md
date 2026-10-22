@@ -257,8 +257,10 @@ The Vencord System24 theme remains the upstream theme file. The generated
 theme import, so Discord receives the same wallpaper-derived palette without
 replacing the upstream theme.
 
-Discord does not live-reload local theme CSS changes. After changing the
-wallpaper, fully restart Discord manually for the generated colors to appear.
+Discord does not live-reload local theme CSS changes. The Matugen update script
+automatically restarts Discord only when Discord was already running before the
+wallpaper update. If Discord was closed, it remains closed. The generated
+colors appear after the restarted Discord instance loads the local theme.
 
 Komorebi uses the documented British spellings `border_colours` and
 `border_style`. The `theme` block is intentionally omitted because defining a
@@ -360,8 +362,9 @@ directory. The update script also falls back to that path.
 ### Discord colors do not change
 
 Discord does not live-reload local theme CSS. After Matugen generates
-`system24-matugen.css`, fully restart Discord and make sure the `system24`
-theme is enabled in Vencord.
+`system24-matugen.css`, the update script restarts an already-running Discord
+instance. If Discord was not running during the update, start it manually and
+make sure the `system24` theme is enabled in Vencord.
 
 ## Updating and rolling back
 
@@ -387,7 +390,8 @@ yasbc reload
 komorebic reload-configuration
 ```
 
-If Discord theme colors changed, restart Discord manually as described above.
+If Discord was closed during the update, start it manually after the generated
+CSS is available.
 
 ### Rolling back an installation
 
