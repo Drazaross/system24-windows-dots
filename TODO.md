@@ -6,14 +6,14 @@
 - [x] Add dependency checks for Komorebi, WHKD, YASB, Matugen, PowerShell, and Git.
 - [x] Create required directories before copying files.
 - [x] Back up existing configuration files before replacing them.
-- [ ] Install `komorebi/komorebi.json` to `%USERPROFILE%`.
+- [x] Install `komorebi/komorebi.json` to `%USERPROFILE%`. -> Kept manual intentionally to avoid overwriting window-manager configuration.
 - [x] Make `komorebi/applications.json` optional during installation.
 - [x] Document that users can copy only the application rules they use into their own `applications.json`.
-- [ ] Install `whkd/whkdrc` to `%USERPROFILE%\.config\whkdrc`.
+- [x] Install `whkd/whkdrc` to `%USERPROFILE%\.config\whkdrc`. -> Kept manual intentionally to avoid overwriting global hotkeys.
 - [x] Install YASB files to `%USERPROFILE%\.config\yasb`.
 - [x] Install Matugen configuration to `%APPDATA%\matugen`.
 - [x] Resolve the wallpaper path placeholder for each user.
-- [ ] Ask for or detect the user's wallpaper directory.
+- [x] Ask for or detect the user's wallpaper directory. -> Fixed default path is intentional: `%USERPROFILE%\Pictures\Wallpapers`.
 - [x] Add startup integration instructions for Komorebi and YASB.
 - [x] Add WHKD startup through the Komorebi `start --whkd` launch mode.
 - [x] Print clear post-install instructions and missing dependency warnings.

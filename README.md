@@ -17,8 +17,10 @@ Install the applications below before applying the configuration:
 - [Fastfetch](https://github.com/fastfetch-cli/fastfetch) for the system summary.
 
 The active user should also have JetBrains Mono Nerd Font installed so the
-icons in YASB and the custom Fastfetch logo render correctly. Place wallpapers
-in `%USERPROFILE%\Pictures\Wallpapers`.
+icons in YASB and the custom Fastfetch logo render correctly. This setup
+intentionally uses the fixed per-user wallpaper directory
+`%USERPROFILE%\Pictures\Wallpapers`; create it if necessary and place wallpapers
+there. The installer prints the resolved absolute path for the current user.
 
 ### Automated installation
 
