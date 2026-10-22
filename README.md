@@ -45,7 +45,7 @@ The installer:
 5. Links the existing Vencord System24 theme to the generated local override,
    when `%APPDATA%\Vencord\themes\system24.theme.css` exists.
 6. Replaces `__WALLPAPERS_PATH__` and `__FASTFETCH_DIR__` with the current
-   user's paths.
+   user's paths in both the active and Matugen-generated configurations.
 7. Creates a timestamped `.bak-YYYYMMDD-HHMMSS` backup before replacing any
    existing file.
 
@@ -71,7 +71,8 @@ The supplied `komorebi.json` references
 `%USERPROFILE%\applications.json`. Copy the repository file if you want the
 included application-specific rules. Otherwise, remove or change
 `app_specific_configuration_path` in your own Komorebi configuration before
-starting Komorebi.
+starting Komorebi. You can also create your own `applications.json` and copy
+only the application rule blocks you use from the repository file.
 
 The installer already copies `matugen/config.toml`,
 `komorebi/komorebi-matugen.json`, and the Vencord template to their runtime

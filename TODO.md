@@ -3,20 +3,20 @@
 ## Installer and setup
 
 - [x] Expand `install.ps1` into the complete one-run setup script. -> Some parts are kept manual intentionally.
-- [ ] Add dependency checks for Komorebi, WHKD, YASB, Matugen, PowerShell, and Git.
-- [ ] Create required directories before copying files.
-- [ ] Back up existing configuration files before replacing them.
+- [x] Add dependency checks for Komorebi, WHKD, YASB, Matugen, PowerShell, and Git.
+- [x] Create required directories before copying files.
+- [x] Back up existing configuration files before replacing them.
 - [ ] Install `komorebi/komorebi.json` to `%USERPROFILE%`.
-- [ ] Make `komorebi/applications.json` optional during installation.
-- [ ] Document that users can copy only the application rules they use into their own `applications.json`.
+- [x] Make `komorebi/applications.json` optional during installation.
+- [x] Document that users can copy only the application rules they use into their own `applications.json`.
 - [ ] Install `whkd/whkdrc` to `%USERPROFILE%\.config\whkdrc`.
-- [ ] Install YASB files to `%USERPROFILE%\.config\yasb`.
-- [ ] Install Matugen configuration to `%APPDATA%\matugen`.
-- [ ] Resolve the wallpaper path placeholder for each user.
+- [x] Install YASB files to `%USERPROFILE%\.config\yasb`.
+- [x] Install Matugen configuration to `%APPDATA%\matugen`.
+- [x] Resolve the wallpaper path placeholder for each user.
 - [ ] Ask for or detect the user's wallpaper directory.
 - [x] Add startup integration instructions for Komorebi and YASB.
 - [x] Add WHKD startup through the Komorebi `start --whkd` launch mode.
-- [ ] Print clear post-install instructions and missing dependency warnings.
+- [x] Print clear post-install instructions and missing dependency warnings.
 
 ## Theming integrations
 

@@ -125,6 +125,11 @@ $fastfetchConfig = Get-Content -Raw -LiteralPath $fastfetchConfigPath
 $fastfetchConfig = $fastfetchConfig.Replace("__FASTFETCH_DIR__", $fastfetchRoot)
 Set-Content -LiteralPath $fastfetchConfigPath -Value $fastfetchConfig -NoNewline
 
+$fastfetchMatugenConfigPath = Join-Path $fastfetchRoot "config-matugen.jsonc"
+$fastfetchMatugenConfig = Get-Content -Raw -LiteralPath $fastfetchMatugenConfigPath
+$fastfetchMatugenConfig = $fastfetchMatugenConfig.Replace("__FASTFETCH_DIR__", $fastfetchRoot.Replace("\", "/"))
+Set-Content -LiteralPath $fastfetchMatugenConfigPath -Value $fastfetchMatugenConfig -NoNewline
+
 Write-Host "Installed YASB configuration to $yasbRoot"
 Write-Host "Installed Fastfetch configuration to $fastfetchRoot"
 Write-Host "Installed Matugen configuration to $matugenRoot"
