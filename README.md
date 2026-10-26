@@ -284,8 +284,11 @@ theme prevents generated `border_colours` from taking effect. This setup uses
 
 ### Discord and Steam workspace mapping
 
-The main Komorebi configuration keeps application workspace rules inside the
-corresponding workspace definitions:
+The main Komorebi configuration uses two monitor configurations. The laptop
+monitor (configuration index `0`) has only the `IX` and `X` workspaces, while
+the external monitor (configuration index `1`) has `I` through `VIII`.
+The application workspace rules remain inside the corresponding workspace
+definitions:
 
 - Discord is assigned to workspace `IX` using an executable rule that contains
   `Discord`.
@@ -306,6 +309,48 @@ Keep the same workspace rules in
 `%USERPROFILE%\komorebi.json` whenever the wallpaper changes, so adding a rule
 only to the live generated file causes it to disappear on the next palette
 update.
+
+### Multi-monitor workspace shortcuts
+
+The WHKD bindings use fixed monitor indices:
+
+- `Alt+1` through `Alt+8` focus workspaces `I` through `VIII` on the external
+  monitor.
+- `Alt+9` focuses `IX` on the laptop.
+- `Alt+0` focuses `X` on the laptop.
+- `Alt+Shift+Comma` moves the focused window to the laptop.
+- `Alt+Shift+Period` moves the focused window to the external monitor.
+
+The `Alt+Shift+number` bindings move the focused window to the corresponding
+fixed workspace as well. The monitor indices are configuration indices, not
+necessarily the order shown by Windows. If Komorebi assigns the monitors in
+the opposite order, run:
+
+```powershell
+komorebic monitor-info
+```
+
+Then add `display_index_preferences` to both
+`komorebi/komorebi.json` and `komorebi/komorebi-matugen.json`, using the
+laptop's `serial_number_id` for configuration index `0` and the external
+monitor's `serial_number_id` for configuration index `1`:
+
+```json
+"display_index_preferences": {
+  "0": "LAPTOP_SERIAL_NUMBER_ID",
+  "1": "EXTERNAL_SERIAL_NUMBER_ID"
+}
+```
+
+After changing the configuration, reload it with:
+
+```powershell
+komorebic reload-configuration
+```
+
+If a window is not managed after connecting the display, use
+`komorebic manage` or restart Komorebi. `komorebic state` can be used to
+confirm the monitor index map.
 
 ## Portability notes
 
