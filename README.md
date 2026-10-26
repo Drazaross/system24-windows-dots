@@ -284,15 +284,15 @@ theme prevents generated `border_colours` from taking effect. This setup uses
 
 ### Discord and Steam workspace mapping
 
-The main Komorebi configuration uses two monitor configurations. The laptop
-monitor (configuration index `0`) has only the `IX` and `X` workspaces, while
-the external monitor (configuration index `1`) has `I` through `VIII`.
+The main Komorebi configuration uses two monitor configurations. The laptop monitor (configuration index `0`) has ten workspaces named `L1`
+through `L8`, `L9`, and `L0`, while the external monitor (configuration index
+`1`) has ten workspaces named `S1` through `S8`, `S9`, and `S0`.
 The application workspace rules remain inside the corresponding workspace
 definitions:
 
-- Discord is assigned to workspace `IX` using an executable rule that contains
+- Discord is assigned to workspace `L9` using an executable rule that contains
   `Discord`.
-- Steam is assigned to workspace `X` using an exact executable match for
+- Steam is assigned to workspace `L0` using an exact executable match for
   `steamwebhelper.exe`.
 
 Steam uses `steamwebhelper.exe` because the visible Steam client window is
@@ -314,15 +314,23 @@ update.
 
 The WHKD bindings use fixed monitor indices:
 
-- `Alt+1` through `Alt+8` focus workspaces `I` through `VIII` on the external
+- `Alt+1` through `Alt+8` focus workspaces `S1` through `S8` on the external
   monitor.
-- `Alt+9` focuses `IX` on the laptop.
-- `Alt+0` focuses `X` on the laptop.
-- `Alt+Shift+Comma` moves the focused window to the laptop.
-- `Alt+Shift+Period` moves the focused window to the external monitor.
+- `Alt+9` and `Alt+0` focus `S9` and `S0` on the external monitor.
+- `Alt+F1` through `Alt+F8` focus workspaces `L1` through `L8` on the laptop.
+- `Alt+F9` and `Alt+F10` focus `L9` and `L0` on the laptop.
+- `Alt+Shift+Comma` moves the focused window to the laptop monitor without
+  selecting a workspace.
+- `Alt+Shift+Period` moves the focused window to the external monitor without
+  selecting a workspace.
 
-The `Alt+Shift+number` bindings move the focused window to the corresponding
-fixed workspace as well. The monitor indices are configuration indices, not
+The `Alt+Shift+1` through `Alt+Shift+0` bindings move a window between
+workspaces on the external monitor, while `Alt+Shift+F1` through
+`Alt+Shift+F10` move it between workspaces on the laptop. Use
+`Alt+Shift+Comma` first to move a window between monitors, then use the
+workspace move shortcut for that monitor. Keeping monitor moves and workspace
+moves as separate shortcuts avoids depending on Komorebi's focused-monitor
+state during a chained command. The monitor indices are configuration indices, not
 necessarily the order shown by Windows. If Komorebi assigns the monitors in
 the opposite order, run:
 
