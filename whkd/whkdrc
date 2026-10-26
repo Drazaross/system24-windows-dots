@@ -59,16 +59,16 @@ alt + 7                 : komorebic focus-monitor 1; komorebic focus-workspace 6
 alt + 8                 : komorebic focus-monitor 1; komorebic focus-workspace 7
 alt + 9                 : komorebic focus-monitor 1; komorebic focus-workspace 8
 alt + 0                 : komorebic focus-monitor 1; komorebic focus-workspace 9
-alt + f1                : komorebic focus-monitor 0; komorebic focus-workspace 0
-alt + f2                : komorebic focus-monitor 0; komorebic focus-workspace 1
-alt + f3                : komorebic focus-monitor 0; komorebic focus-workspace 2
-alt + f4                : komorebic focus-monitor 0; komorebic focus-workspace 3
-alt + f5                : komorebic focus-monitor 0; komorebic focus-workspace 4
-alt + f6                : komorebic focus-monitor 0; komorebic focus-workspace 5
-alt + f7                : komorebic focus-monitor 0; komorebic focus-workspace 6
-alt + f8                : komorebic focus-monitor 0; komorebic focus-workspace 7
-alt + f9                : komorebic focus-monitor 0; komorebic focus-workspace 8
-alt + f10               : komorebic focus-monitor 0; komorebic focus-workspace 9
+alt + ctrl + 1          : komorebic focus-monitor 0; komorebic focus-workspace 0
+alt + ctrl + 2          : komorebic focus-monitor 0; komorebic focus-workspace 1
+alt + ctrl + 3          : komorebic focus-monitor 0; komorebic focus-workspace 2
+alt + ctrl + 4          : komorebic focus-monitor 0; komorebic focus-workspace 3
+alt + ctrl + 5          : komorebic focus-monitor 0; komorebic focus-workspace 4
+alt + ctrl + 6          : komorebic focus-monitor 0; komorebic focus-workspace 5
+alt + ctrl + 7          : komorebic focus-monitor 0; komorebic focus-workspace 6
+alt + ctrl + 8          : komorebic focus-monitor 0; komorebic focus-workspace 7
+alt + ctrl + 9          : komorebic focus-monitor 0; komorebic focus-workspace 8
+alt + ctrl + 0          : komorebic focus-monitor 0; komorebic focus-workspace 9
 
 # Move windows across workspaces
 alt + shift + 1         : komorebic focus-monitor 1; komorebic move-to-workspace 0
@@ -81,16 +81,16 @@ alt + shift + 7         : komorebic focus-monitor 1; komorebic move-to-workspace
 alt + shift + 8         : komorebic focus-monitor 1; komorebic move-to-workspace 7
 alt + shift + 9         : komorebic focus-monitor 1; komorebic move-to-workspace 8
 alt + shift + 0         : komorebic focus-monitor 1; komorebic move-to-workspace 9
-alt + shift + f1        : komorebic focus-monitor 0; komorebic move-to-workspace 0
-alt + shift + f2        : komorebic focus-monitor 0; komorebic move-to-workspace 1
-alt + shift + f3        : komorebic focus-monitor 0; komorebic move-to-workspace 2
-alt + shift + f4        : komorebic focus-monitor 0; komorebic move-to-workspace 3
-alt + shift + f5        : komorebic focus-monitor 0; komorebic move-to-workspace 4
-alt + shift + f6        : komorebic focus-monitor 0; komorebic move-to-workspace 5
-alt + shift + f7        : komorebic focus-monitor 0; komorebic move-to-workspace 6
-alt + shift + f8        : komorebic focus-monitor 0; komorebic move-to-workspace 7
-alt + shift + f9        : komorebic focus-monitor 0; komorebic move-to-workspace 8
-alt + shift + f10       : komorebic focus-monitor 0; komorebic move-to-workspace 9
+alt + ctrl + shift + 1  : komorebic focus-monitor 0; komorebic move-to-workspace 0
+alt + ctrl + shift + 2  : komorebic focus-monitor 0; komorebic move-to-workspace 1
+alt + ctrl + shift + 3  : komorebic focus-monitor 0; komorebic move-to-workspace 2
+alt + ctrl + shift + 4  : komorebic focus-monitor 0; komorebic move-to-workspace 3
+alt + ctrl + shift + 5  : komorebic focus-monitor 0; komorebic move-to-workspace 4
+alt + ctrl + shift + 6  : komorebic focus-monitor 0; komorebic move-to-workspace 5
+alt + ctrl + shift + 7  : komorebic focus-monitor 0; komorebic move-to-workspace 6
+alt + ctrl + shift + 8  : komorebic focus-monitor 0; komorebic move-to-workspace 7
+alt + ctrl + shift + 9  : komorebic focus-monitor 0; komorebic move-to-workspace 8
+alt + ctrl + shift + 0  : komorebic focus-monitor 0; komorebic move-to-workspace 9
 
 # Move the focused window between displays
 alt + shift + oem_comma  : komorebic move-to-monitor 0

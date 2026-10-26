@@ -317,16 +317,17 @@ The WHKD bindings use fixed monitor indices:
 - `Alt+1` through `Alt+8` focus workspaces `S1` through `S8` on the external
   monitor.
 - `Alt+9` and `Alt+0` focus `S9` and `S0` on the external monitor.
-- `Alt+F1` through `Alt+F8` focus workspaces `L1` through `L8` on the laptop.
-- `Alt+F9` and `Alt+F10` focus `L9` and `L0` on the laptop.
+- `Alt+Ctrl+1` through `Alt+Ctrl+8` focus workspaces `L1` through `L8`
+  on the laptop.
+- `Alt+Ctrl+9` and `Alt+Ctrl+0` focus `L9` and `L0` on the laptop.
 - `Alt+Shift+Comma` moves the focused window to the laptop monitor without
   selecting a workspace.
 - `Alt+Shift+Period` moves the focused window to the external monitor without
   selecting a workspace.
 
 The `Alt+Shift+1` through `Alt+Shift+0` bindings move a window between
-workspaces on the external monitor, while `Alt+Shift+F1` through
-`Alt+Shift+F10` move it between workspaces on the laptop. Use
+workspaces on the external monitor, while `Alt+Ctrl+Shift+1` through
+`Alt+Ctrl+Shift+0` move it between workspaces on the laptop. Use
 `Alt+Shift+Comma` first to move a window between monitors, then use the
 workspace move shortcut for that monitor. Keeping monitor moves and workspace
 moves as separate shortcuts avoids depending on Komorebi's focused-monitor
