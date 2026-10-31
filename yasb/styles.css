@@ -1801,6 +1801,72 @@ which is 16 pixels same as the other sections. */
 }
 
 /* Todo and Notes */
+.pomodoro-widget {
+    padding: 0 6px;
+}
+
+.pomodoro-widget .icon {
+    color: var(--accent);
+    padding: 0;
+}
+
+.pomodoro-widget .label {
+    color: var(--text);
+    padding: 0;
+}
+
+.pomodoro-widget .label.paused,
+.pomodoro-widget .icon.paused {
+    color: var(--text-muted);
+}
+
+.pomodoro-widget .label.work,
+.pomodoro-widget .icon.work {
+    color: var(--accent);
+}
+
+.pomodoro-widget .label.break,
+.pomodoro-widget .icon.break {
+    color: var(--accentText);
+}
+
+.pomodoro-menu {
+    background-color: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-family: var(--system-font);
+}
+
+.pomodoro-menu .header,
+.pomodoro-menu .status,
+.pomodoro-menu .session {
+    color: var(--text);
+}
+
+.pomodoro-menu .button {
+    background-color: var(--mutedBG);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    padding: 6px 12px;
+}
+
+.pomodoro-menu .button:hover {
+    background-color: var(--hover);
+    color: var(--text);
+}
+
+.pomodoro-menu .button.start,
+.pomodoro-menu .button.pause {
+    background-color: var(--accent);
+    color: var(--accentText);
+}
+
+.pomodoro-menu .button.reset {
+    background-color: var(--mutedBG);
+}
+
 .todo-widget,
 .notes-widget {
     padding: 0 6px;
